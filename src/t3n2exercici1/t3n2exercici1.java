@@ -8,18 +8,19 @@ public class t3n2exercici1 {
 
 	public static void main(String[] args) {
 		HashSet<Restaurant> restaurants = new HashSet<Restaurant>();
-		Restaurant rest= new Restaurant(null, 0);
+		Restaurant r1= new Restaurant(null, 0);
+		
 		int i = 0;
 		
 		do {
 			
 		System.out.println("Introdueix el nom d'un restaurant: ");
-		rest.setNom(entrada.nextLine());
+		r1.setName(entrada.nextLine());
 		
 		System.out.println("Introdueix la puntuació: ");
-		rest.setPuntuació(entrada.nextInt());
+		r1.setPuntuació(entrada.nextInt());
 		
-		restaurants.add(rest);
+		restaurants.add(r1);
 		
 		System.out.println();
 		

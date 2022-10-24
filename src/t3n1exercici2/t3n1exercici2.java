@@ -20,6 +20,7 @@ public class t3n1exercici2 {
 		list1.add(9);
 		list1.add(10);
 
+		//instance Iterator
 	
 		ListIterator<Integer> llistaIterator = list1.listIterator();
 		while (llistaIterator.hasNext()) {

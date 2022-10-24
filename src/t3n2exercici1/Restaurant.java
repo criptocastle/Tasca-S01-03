@@ -1,28 +1,29 @@
 package t3n2exercici1;
 
+
 public class Restaurant {
-	private String nom;
-	private int puntuació;
+	private String name = "";
+	private int score = 0;
 	
 	public Restaurant(String nom, int puntuació) {
-		this.nom = nom;
-		this.puntuació = puntuació;
+		this.name = name;
+		this.score = score;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getPuntuació() {
-		return puntuació;
+		return score;
 	}
 
-	public void setPuntuació(int puntuació) {
-		this.puntuació = puntuació;
+	public void setPuntuació(int score) {
+		this.score = score;
 	}
 	
 	
