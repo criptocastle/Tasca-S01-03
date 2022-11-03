@@ -18,7 +18,8 @@ public class Arxiu {
 		try {
 			// creo objecte file per llegir l'arxiu .txt
 
-			File countries = new File("/Users/gerardclosa/eclipse-workspace/s103_Collections/src/t3n1exercici3/countries.txt");
+			File countries = new File("/Users/gerardclosa/eclipse-workspace/s103_Collections/countries.txt");
+			System.out.println("Ha finalitzat la càrrega de l'arxiu.\n");
 
 			// objecte buffered del file
 
@@ -38,10 +39,9 @@ public class Arxiu {
 					capitalCities.put(country, capital);
 				}
 			}
-			System.out.println("Ha finalitzat la càrrega de l'arxiu.\n");
 
 		} catch (Exception e) {
-			System.out.println("No s'ha trobat cap arxiu a llegir.");
+			//System.out.println("No s'ha trobat cap arxiu a llegir.");
 
 		} finally {
 			
@@ -56,7 +56,7 @@ public class Arxiu {
 
 	public static void createFile() {
 		// creacio file: només vull que es crei un arxiu classificació i s'hi guardin
-		// totes les dades d'usuari i puntuacio
+		// totes les dades d'usuari i puntuacions, sino sobreescriu
 
 		try {
 			File create = new File("classificacio.txt");
@@ -76,8 +76,8 @@ public class Arxiu {
 		// escriptura de nom i puntuació en el file, els passem com a nous parametres
 
 		try {
-			FileWriter userData = new FileWriter("classificacio.txt");
-			userData.write(nameUser + "/ " + scoreUser + " punts."); // aquí hi vull escriure el nom d'usuari i la
+			FileWriter userData = new FileWriter("classificacio.txt", true); //amb el TRUE, li donem l'opció seguir escrivint en el mateix arxiu
+			userData.write(nameUser + "/ " + scoreUser + " punts.\n"); // aquí hi vull escriure el nom d'usuari i la
 																		// puntuació obtinguda
 			userData.close();
 			System.out.println("S'ha escrit correctament.");
@@ -92,7 +92,7 @@ public class Arxiu {
 		Random random = new Random();
 
 		// crear array amb els valors del HashMap per poder aplicar metode random
-		Object[] randomCountries = capitalCities.values().toArray();
+		Object[] randomCountries = capitalCities.keySet().toArray();
 		String randomCountry = (String) randomCountries[random.nextInt(randomCountries.length)]; // casting a String
 
 		return randomCountry;
@@ -100,12 +100,11 @@ public class Arxiu {
 
 	public static boolean capitalCheck(String userAnswr, String randomCountry) {
 		boolean check = false;
-		String matchCountry = "";
-
+		
 		// recorrer hashmap
 		for (String capitals : capitalCities.keySet()) {
-			if (randomCountry.equalsIgnoreCase(matchCountry = capitalCities.get(capitals))) {
-				if (userAnswr.equals(capitals)) {
+			if (randomCountry.equalsIgnoreCase(capitalCities.get(capitals))) {
+				if (userAnswr.equalsIgnoreCase(capitals)) {
 					check = true;
 				}
 			}
